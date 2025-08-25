@@ -1,0 +1,37 @@
+.container {
+    color: rgb(219, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+
+    gap: 1rem;
+    
+    height: 300px;   
+    max-width: 90vw;   
+    max-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+
+    /*Center*/
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /*Layer*/
+    z-index: 10;
+
+    /*Borders*/
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 12px;
+
+
+
+   
+}
+
+
