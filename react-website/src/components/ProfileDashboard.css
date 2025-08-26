@@ -1,0 +1,282 @@
+/* Center everything */
+.dashboard-bg {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none; /* handled by body */
+}
+
+/* The main content grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  width: 900px;
+  max-width: 95vw;
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+/* Top row: profile + bio */
+.profile-card {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+.bio-card {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+/* Bottom row: music + stats */
+.music-card {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+.stats-card {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+/* Card glass effect */
+.card {
+  background: rgba(24, 24, 28, 0.75);
+  border-radius: 18px;
+  border: 2px solid rgba(255,255,255,0.06);
+  box-shadow: 0 4px 28px 0 #0007;
+  padding: 2rem 2rem 1.6rem 2rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  transition: box-shadow 0.18s;
+  /* subtle glass blur */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Profile card details */
+.profile-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.4rem;
+}
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  image-rendering: pixelated;
+  background: #222;
+  margin-bottom: 0.4em;
+}
+.profile-icons {
+  display: flex;
+  gap: 0.7em;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.profile-icons img {
+  width: 28px;
+  height: 28px;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  filter: grayscale(1) brightness(1.4);
+}
+.profile-icons img:hover {
+  opacity: 1;
+}
+.profile-text h1 {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0 0 0.2em 0;
+}
+
+.greet {
+  margin: 0;
+  padding: 0;
+}
+
+.profile-text .subheading {
+  color: #b5b9c9;
+  font-size: 1.08em;
+  margin-bottom: 0.5em;
+}
+.profile-location {
+  color: #9499a4;
+  font-size: 1em;
+  margin-top: 0.3em;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+/* Bio card */
+.bio-header {
+  font-family: "Fira Mono", monospace;
+  color: #b2b8c3;
+  font-size: 1em;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.04em;
+}
+.bio-card h2 {
+  margin: 0 0 0.3em 0;
+  font-size: 1.55em;
+  font-weight: 700;
+  text-decoration: underline 2px #fff5;
+  text-underline-offset: 3px;
+}
+.bio-text {
+  font-size: 1.15em;
+  line-height: 1.45;
+  color: #e8eaf1;
+}
+
+/* Music card */
+.music-card {
+  flex-direction: row;
+  align-items: center;
+  gap: 1.3em;
+}
+.music-art {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #23242a;
+  margin-right: 1em;
+  box-shadow: 0 2px 8px #0006;
+}
+.music-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.music-label {
+  color: #c3c8d1;
+  font-size: 1em;
+  margin-bottom: 0.22em;
+}
+.music-track {
+  font-size: 1.18em;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 0.13em;
+}
+.music-artist {
+  color: #97a1b3;
+  font-size: 1.05em;
+}
+
+/* Stats card */
+.stats-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+}
+.stats-icon {
+  width: 44px;
+  height: 44px;
+  background: #202128;
+  border-radius: 8px;
+  padding: 0.4em;
+  margin-right: 0.7em;
+}
+.stats-avg {
+  font-size: 1.23em;
+  font-weight: 700;
+  color: #fff;
+}
+.stats-best {
+  color: #7d8ca7;
+  font-size: 1.05em;
+  margin-top: 0.15em;
+}
+.stats-light {
+  color: #8a97a7;
+  font-weight: 400;
+}
+.stats-bar-bg {
+  background: #23252c;
+  border-radius: 8px;
+  height: 16px;
+  width: 100%;
+  margin-top: 0.5em;
+  position: relative;
+  overflow: hidden;
+}
+.stats-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7f9cf5 0%, #3f5fa8 100%);
+  border-radius: 8px 0 0 8px;
+}
+.stats-bar-label {
+  font-size: 0.98em;
+  color: #c3c8d1;
+  margin-top: 0.07em;
+  text-align: left;
+}
+
+/* Footer "work in progress" badge */
+.site-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1em;
+  color: #bcc0ca;
+  background: rgba(24, 24, 28, 0.73);
+  border-radius: 100px;
+  padding: 0.5em 1.3em 0.5em 1.1em;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+  border: 1.5px solid rgba(255,255,255,0.06);
+}
+
+@media (max-width: 1100px) {
+  .dashboard-grid {
+    width: 98vw;
+    max-width: 98vw;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  .profile-card, .bio-card, .music-card, .stats-card {
+    grid-column: 1 / 2 !important;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.Name {
+  margin: 0;
+  font-weight: 800;
+  font-size: 2rem;
+  display: block;
+}
+
+/* Optional: subtle fade for glass cards on hover */
+.card:hover {
+  box-shadow: 0 6px 38px 0 #0009;
+  border-color: rgba(255,255,255,0.13);
+}
+
+@media (max-width: 1100px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto; /* One row per card */
+    width: 100%;
+    gap: 1.3rem;
+  }
+  .profile-card,
+  .bio-card,
+  .music-card,
+  .stats-card {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+}

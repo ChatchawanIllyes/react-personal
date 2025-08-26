@@ -1,10 +1,6 @@
 import "./Introduction.css";
-import IntroBoxes from "./FlexRowOrStack";
+import IntroBoxes from "./ProfileDashboard";
 
 export default function Introduction() {
-    return (
-        <div className="container">
-
-        </div>
-    );
+  return <div className="container"></div>;
 }

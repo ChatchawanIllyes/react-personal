@@ -1,16 +1,13 @@
-import './App.css'
-import RainbowBackground from "./components/Background"
-import Introduction from "../src/components/Introduction"
-import FlexRowOrStack from './components/FlexRowOrStack'
- function App() {
-
-
+import "./App.css";
+import RainbowBackground from "./components/Background";
+import ProfileDashboard from "./components/ProfileDashboard";
+function App() {
   return (
     <>
-     <RainbowBackground />
-     <FlexRowOrStack />
+      <RainbowBackground />
+      <ProfileDashboard />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
