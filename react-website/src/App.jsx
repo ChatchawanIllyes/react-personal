@@ -13,6 +13,11 @@ function App() {
     document.body.style.background = dark
       ? "linear-gradient(to right, #111, #222 90%)"
       : "linear-gradient(to right, #111, #889498)";
+    if (dark) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
   }, [dark]);
 
   const items = [

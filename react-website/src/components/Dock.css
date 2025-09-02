@@ -48,8 +48,11 @@
   transition: background 0.2s, border 0.2s;
 }
 
+body.dark-mode .dock-item {
+  border: 1px solid #a4a4a4;
+}
 .dock-item:active {
-  background: #18122b;
+  background: #1e1e1e;
   border: 1px solid #444;
 }
 
