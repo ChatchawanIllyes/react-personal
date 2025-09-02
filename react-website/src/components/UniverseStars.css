@@ -1,7 +1,7 @@
 body {
   background: #111; /* fallback */
   background: -webkit-linear-gradient(to right, #111, #888);
-  background: linear-gradient(to right, #111, #888);
+  background: linear-gradient(to right, #111, #889498);
   overflow: hidden;
 }
 

@@ -1,37 +1,42 @@
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import RainbowBackground from "./components/Background";
 import ProfileDashboard from "./components/ProfileDashboard";
 import Dock from "./components/Dock";
-import {
-  VscHome,
-  VscArchive,
-  VscAccount,
-  VscSettingsGear,
-} from "react-icons/vsc";
+import { VscHome, VscFolder } from "react-icons/vsc";
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 
 function App() {
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    document.body.style.background = dark
+      ? "linear-gradient(to right, #111, #222 90%)"
+      : "linear-gradient(to right, #111, #889498)";
+  }, [dark]);
+
   const items = [
     {
       icon: <VscHome size={18} />,
       label: "Home",
-      onClick: () => alert("Home!"),
+      onClick: () => {},
     },
     {
-      icon: <VscArchive size={18} />,
-      label: "Archive",
-      onClick: () => alert("Archive!"),
+      icon: <VscFolder size={18} />,
+      label: "Projects",
+      onClick: () => {},
     },
     {
-      icon: <VscAccount size={18} />,
-      label: "Profile",
-      onClick: () => alert("Profile!"),
-    },
-    {
-      icon: <VscSettingsGear size={18} />,
-      label: "Settings",
-      onClick: () => alert("Settings!"),
+      icon: dark ? (
+        <MdOutlineDarkMode size={18} />
+      ) : (
+        <MdOutlineLightMode size={18} />
+      ),
+      label: "Theme",
+      onClick: () => setDark((d) => !d),
     },
   ];
+
   return (
     <>
       <RainbowBackground />
