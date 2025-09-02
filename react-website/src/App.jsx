@@ -39,7 +39,7 @@ function App() {
         setTimeout(() => {
           setShowProjects(false);
           setFade(true);
-        }, 200);
+        }, 700);
       },
     },
     {
@@ -50,7 +50,7 @@ function App() {
         setTimeout(() => {
           setShowProjects(true);
           setFade(true);
-        }, 200);
+        }, 700);
       },
     },
     {
@@ -71,7 +71,7 @@ function App() {
       {/* Main content above the stars */}
       <div
         style={{
-          transition: "opacity 0.3s",
+          transition: "opacity 1s",
           opacity: fade ? 1 : 0,
           position: "relative",
           zIndex: 2,
