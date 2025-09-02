@@ -26,7 +26,7 @@ export default function ProfileDashboard() {
             <u>Slice of Me</u>
           </h2>
           <div className="bio-text">
-            I’m a rising sophomore Computer Science student who loves anime and creative projects. Beyond my classes, I’m always exploring full-stack tools and frameworks to bring cool ideas to life.
+            I’m a rising sophomore Computer Science student who loves anime and creative projects. Beyond my classes, I’m always exploring full-stack tools and frameworks to bring cool ideas to life!
           </div>
         </div>
 
