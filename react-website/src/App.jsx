@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     document.body.style.background = dark
-      ? "linear-gradient(to right, #000000ff, #000000ff 90%)"
+      ? "linear-gradient(to right, #000000ff, #222222ff 90%)"
       : "linear-gradient(to right, #020202ff, #294742ff, #294c54ff)";
     if (dark) {
       document.body.classList.add("dark-mode");

@@ -146,6 +146,13 @@ html {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: box-shadow 0.18s;
+  user-select: none;
+}
+.bio-card {
+  user-select: none;
+}
+.profile-card {
+  user-select: none;
 }
 
 .profile-card {
