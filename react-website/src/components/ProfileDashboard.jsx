@@ -48,6 +48,7 @@ export default function ProfileDashboard() {
           <div className="bio-gif-landscape">
             {/* Insert your landscape gif below. Example: */}
             {/* <img src="/your-landscape.gif" alt="Landscape gif" /> */}
+            <img src="/beautifulgif.gif" alt="Beautiful landscape gif" />
           </div>
         </div>
       </div>
