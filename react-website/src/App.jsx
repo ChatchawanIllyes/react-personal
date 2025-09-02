@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import RainbowBackground from "./components/Background";
@@ -7,7 +6,6 @@ import ProjectsDashboard from "./components/ProjectsDashboard";
 import Dock from "./components/Dock";
 import { VscHome, VscFolder } from "react-icons/vsc";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
-
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -68,8 +66,10 @@ function App() {
 
   return (
     <>
+      {/* Keep RainbowBackground always mounted at the bottom */}
       <RainbowBackground />
-      <div style={{ transition: "opacity 0.3s", opacity: fade ? 1 : 0 }}>
+      {/* Main content above the stars */}
+      <div style={{ transition: "opacity 0.3s", opacity: fade ? 1 : 0, position: "relative", zIndex: 2 }}>
         {showProjects ? (
           <ProjectsDashboard projects={projects} />
         ) : (
