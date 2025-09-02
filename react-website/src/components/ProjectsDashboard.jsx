@@ -11,7 +11,9 @@ export default function ProjectsDashboard({ projects }) {
             <p className="project-bio-placeholder">
               {project.description || "Project bio/description placeholder"}
             </p>
-            <button className="see-project-btn">See Project</button>
+            <button className="see-project-btn">
+              <span>See Project</span>
+            </button>
           </div>
         ))}
       </div>
