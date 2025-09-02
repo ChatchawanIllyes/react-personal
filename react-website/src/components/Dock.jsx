@@ -30,7 +30,7 @@ function DockItem({
   baseItemSize,
 }) {
   const ref = useRef(null);
-  const isHovered = useMotionValue(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const mouseDistance = useTransform(mouseX, (val) => {
     const rect = ref.current?.getBoundingClientRect() ?? {
@@ -47,6 +47,14 @@ function DockItem({
   );
   const size = useSpring(targetSize, spring);
 
+  // Separate icon and label
+  const icon = Children.toArray(children).find(
+    (child) => child.type && child.type.name === "DockIcon"
+  );
+  const label = Children.toArray(children).find(
+    (child) => child.type && child.type.name === "DockLabel"
+  );
+
   return (
     <motion.div
       ref={ref}
@@ -55,44 +63,41 @@ function DockItem({
         height: size,
         minWidth: baseItemSize,
         minHeight: baseItemSize,
+        position: "relative",
       }}
-      onHoverStart={() => isHovered.set(1)}
-      onHoverEnd={() => isHovered.set(0)}
-      onFocus={() => isHovered.set(1)}
-      onBlur={() => isHovered.set(0)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
       onClick={onClick}
       className={`dock-item ${className}`}
       tabIndex={0}
       role="button"
       aria-haspopup="true"
     >
-      {Children.map(children, (child) => cloneElement(child, { isHovered }))}
+      {icon}
+      {label && cloneElement(label, { isHovered })}
     </motion.div>
   );
 }
 
-function DockLabel({ children, className = "", ...rest }) {
-  const { isHovered } = rest;
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const unsubscribe = isHovered.on("change", (latest) => {
-      setIsVisible(latest === 1);
-    });
-    return () => unsubscribe();
-  }, [isHovered]);
-
+function DockLabel({ children, className = "", isHovered }) {
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isHovered && (
         <motion.div
           initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: -10 }}
+          animate={{ opacity: 1, y: -16 }}
           exit={{ opacity: 0, y: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{
+            duration: 0.22,
+            type: "spring",
+            stiffness: 180,
+            damping: 18,
+          }}
           className={`dock-label ${className}`}
           role="tooltip"
-          style={{ x: "-50%" }}
+          style={{ x: "-50%", pointerEvents: "none" }}
         >
           {children}
         </motion.div>
@@ -180,7 +185,6 @@ export default function Dock({
             baseItemSize={responsiveBaseItemSize}
           >
             <DockIcon>{item.icon}</DockIcon>
-            <DockLabel>{item.label}</DockLabel>
           </DockItem>
         ))}
       </motion.div>
