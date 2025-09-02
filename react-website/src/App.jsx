@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     document.body.style.background = dark
       ? "linear-gradient(to right, #000000ff, #222222ff 90%)"
-      : "linear-gradient(to right, #020202ff, #294647ff, #34674aff)";
+      : "linear-gradient(to right, #020202ff, #294647ff, #34674aff, #c6c6c6ff)";
     if (dark) {
       document.body.classList.add("dark-mode");
     } else {
@@ -25,10 +25,12 @@ function App() {
 
   // Example projects data
   const projects = [
-    { title: "Project One" },
-    { title: "Project Two" },
-    { title: "Project Three" },
+    { title: "CodeSense", description: "Custom coding platform for visually impaired children that uses screen reader compatibility and voice-controlled programming to make learning to code more inclusive."  },
+    { title: "CloudMed", description: "Cloud-based storage solution for medical VR devices, built with Azure Blob Storage to securely host 250+ VR video files and eliminate reliance on internal headset storage." },
+    { title: "Market Data Service", description: "Limited-availability platform built with FastAPI, PostgreSQL, and Kafka to process live data for 100+ stocks in real time." },
   ];
+
+
 
   const items = [
     {
@@ -78,7 +80,10 @@ function App() {
         }}
       >
         {showProjects ? (
-          <ProjectsDashboard projects={projects} />
+          <ProjectsDashboard 
+          projects={projects}
+        
+           />
         ) : (
           <ProfileDashboard dark={dark} />
         )}

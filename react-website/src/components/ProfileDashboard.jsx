@@ -2,9 +2,7 @@ import "./ProfileDashboard.css";
 
 export default function ProfileDashboard({ dark }) {
   // Use the correct gif based on dark mode
-  const gifSrc = dark
-    ? "/darkmodegif.gif"
-    : "/beautifulgif.gif";
+  const gifSrc = dark ? "/darkmodegif.gif" : "/beautifulgif.gif";
   return (
     <div className="dashboard-bg">
       <div className="dashboard-grid">
