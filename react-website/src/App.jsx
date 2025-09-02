@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     document.body.style.background = dark
       ? "linear-gradient(to right, #000000ff, #222222ff 90%)"
-      : "linear-gradient(to right, #020202ff, #294742ff, #294c54ff)";
+      : "linear-gradient(to right, #020202ff, #294647ff, #34674aff)";
     if (dark) {
       document.body.classList.add("dark-mode");
     } else {
@@ -80,7 +80,7 @@ function App() {
         {showProjects ? (
           <ProjectsDashboard projects={projects} />
         ) : (
-          <ProfileDashboard />
+          <ProfileDashboard dark={dark} />
         )}
       </div>
       <Dock

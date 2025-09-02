@@ -1,6 +1,10 @@
 import "./ProfileDashboard.css";
 
-export default function ProfileDashboard() {
+export default function ProfileDashboard({ dark }) {
+  // Use the correct gif based on dark mode
+  const gifSrc = dark
+    ? "/darkmodegif.gif"
+    : "/beautifulgif.gif";
   return (
     <div className="dashboard-bg">
       <div className="dashboard-grid">
@@ -46,9 +50,7 @@ export default function ProfileDashboard() {
             problem-solving, and bringing cool ideas to life through coding!
           </div>
           <div className="bio-gif-landscape">
-            {/* Insert your landscape gif below. Example: */}
-            {/* <img src="/your-landscape.gif" alt="Landscape gif" /> */}
-            <img src="/beautifulgif.gif" alt="Beautiful landscape gif" />
+            <img src={gifSrc} alt="Beautiful landscape gif" />
           </div>
         </div>
       </div>
