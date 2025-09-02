@@ -8,37 +8,40 @@ const UniverseStars = () => {
     const starCount = 400;
     const maxTime = 30;
     const universe = universeRef.current;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
 
-    universe.innerHTML = "";
-
-    for (let i = 0; i < starCount; ++i) {
-      const ypos = Math.round(Math.random() * height);
-      const star = document.createElement("div");
-      const speed = 1000 * (Math.random() * maxTime + 1);
-      star.setAttribute("class", "star" + (3 - Math.floor(speed / 1000 / 8)));
-      star.style.backgroundColor = "white";
-      star.style.top = `${ypos}px`;
-
-      universe.appendChild(star);
-
-      star.animate(
-        [
+    function generateStars() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      universe.innerHTML = "";
+      for (let i = 0; i < starCount; ++i) {
+        const ypos = Math.round(Math.random() * height);
+        const star = document.createElement("div");
+        const speed = 1000 * (Math.random() * maxTime + 1);
+        star.setAttribute("class", "star" + (3 - Math.floor(speed / 1000 / 8)));
+        star.style.backgroundColor = "white";
+        star.style.top = `${ypos}px`;
+        universe.appendChild(star);
+        star.animate(
+          [
+            {
+              transform: `translate3d(${width}px, 0px, 0)`,
+            },
+            {
+              transform: `translate3d(-${Math.random() * 256}px, 0px, 0)`,
+            },
+          ],
           {
-            transform: `translate3d(${width}px, 0px, 0)`
-          },
-          {
-            transform: `translate3d(-${Math.random() * 256}px, 0px, 0)`
+            delay: Math.random() * -speed,
+            duration: speed,
+            iterations: 1000,
           }
-        ],
-        {
-          delay: Math.random() * -speed,
-          duration: speed,
-          iterations: 1000
-        }
-      );
+        );
+      }
     }
+
+    generateStars();
+    window.addEventListener("resize", generateStars);
+    return () => window.removeEventListener("resize", generateStars);
   }, []);
 
   return (
@@ -52,7 +55,7 @@ const UniverseStars = () => {
         width: "100vw",
         height: "100vh",
         pointerEvents: "none",
-        zIndex: 0
+        zIndex: 0,
       }}
     />
   );
