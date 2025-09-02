@@ -69,7 +69,14 @@ function App() {
       {/* Keep RainbowBackground always mounted at the bottom */}
       <RainbowBackground />
       {/* Main content above the stars */}
-      <div style={{ transition: "opacity 0.3s", opacity: fade ? 1 : 0, position: "relative", zIndex: 2 }}>
+      <div
+        style={{
+          transition: "opacity 0.3s",
+          opacity: fade ? 1 : 0,
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
         {showProjects ? (
           <ProjectsDashboard projects={projects} />
         ) : (
