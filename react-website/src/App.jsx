@@ -11,6 +11,7 @@ function App() {
   const [dark, setDark] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [fade, setFade] = useState(true);
+  const [pendingProjects, setPendingProjects] = useState(showProjects);
 
   useEffect(() => {
     document.body.style.background = dark
@@ -37,7 +38,7 @@ function App() {
       description:
         "Cloud-based storage solution for medical VR devices, built with Azure Blob Storage to securely host 250+ VR video files and eliminate reliance on internal headset storage.",
       image: "/project-cloudmed.png",
-      link: "",
+      link: "https://code-sense-gamma.vercel.app/",
     },
     {
       title: "Market Data Service",
@@ -49,33 +50,38 @@ function App() {
     {
       title: "Plantify",
       description:
-        "Transform any recipe into a plant-based version using AI by pasting a URL and getting vegan ingredient substitutions",
-      image: "/project-plantify.png",
-      link: "",
+        "Transform any recipe into a plant-based version using AI by pasting a URL and getting vegan ingredient substitutions.",
+      image: "/plantify_v3.png",
+      link: "https://plantify.figma.site/",
     },
   ];
 
+  const transitionDuration = 500;
   const items = [
     {
-      icon: <VscHome size={18} />,
+      icon: <VscHome size={18} />, 
       label: "Home",
       onClick: () => {
+        if (!showProjects) return;
         setFade(false);
         setTimeout(() => {
-          setShowProjects(false);
+          setPendingProjects(false);
           setFade(true);
-        }, 700);
+          setTimeout(() => setShowProjects(false), transitionDuration);
+        }, transitionDuration);
       },
     },
     {
-      icon: <VscFolder size={18} />,
+      icon: <VscFolder size={18} />, 
       label: "Projects",
       onClick: () => {
+        if (showProjects) return;
         setFade(false);
         setTimeout(() => {
-          setShowProjects(true);
+          setPendingProjects(true);
           setFade(true);
-        }, 700);
+          setTimeout(() => setShowProjects(true), transitionDuration);
+        }, transitionDuration);
       },
     },
     {
@@ -94,19 +100,19 @@ function App() {
       {/* Keep RainbowBackground always mounted at the bottom */}
       <RainbowBackground />
       {/* Main content above the stars */}
-      <div
-        style={{
-          transition: "opacity 1s",
-          opacity: fade ? 1 : 0,
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
-        {showProjects ? (
-          <ProjectsDashboard projects={projects} />
-        ) : (
+      <div className="crossfade-container">
+        <div
+          className={`crossfade-view${!pendingProjects && fade ? ' active' : ''}`}
+          style={{ minHeight: '100vh' }}
+        >
           <ProfileDashboard dark={dark} />
-        )}
+        </div>
+        <div
+          className={`crossfade-view${pendingProjects && fade ? ' active' : ''}`}
+          style={{ minHeight: '100vh' }}
+        >
+          <ProjectsDashboard projects={projects} />
+        </div>
       </div>
       <Dock
         items={items}
