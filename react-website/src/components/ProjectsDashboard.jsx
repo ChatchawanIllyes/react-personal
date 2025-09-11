@@ -6,7 +6,24 @@ export default function ProjectsDashboard({ projects }) {
       <div className="projects-grid">
         {projects.map((project, idx) => (
           <div className="project-card" key={idx}>
-            <div className="project-image-placeholder">Image</div>
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.title + " logo"}
+                className="project-image"
+                style={{
+                  width: "100%",
+                  height: "120px",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                  marginBottom: "1em",
+                  background:
+                    "#222 linear-gradient(135deg, #333 40%, #444 100%)",
+                }}
+              />
+            ) : (
+              <div className="project-image-placeholder">Image</div>
+            )}
             <h3>{project.title}</h3>
             <p className="project-bio-placeholder">
               {project.description || "Project bio/description placeholder"}

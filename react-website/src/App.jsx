@@ -25,12 +25,35 @@ function App() {
 
   // Example projects data
   const projects = [
-    { title: "CodeSense", description: "Custom coding platform for visually impaired children that uses screen reader compatibility and voice-controlled programming to make learning to code more inclusive."  },
-    { title: "CloudMed", description: "Cloud-based storage solution for medical VR devices, built with Azure Blob Storage to securely host 250+ VR video files and eliminate reliance on internal headset storage." },
-    { title: "Market Data Service", description: "Limited-availability platform built with FastAPI, PostgreSQL, and Kafka to process live data for 100+ stocks in real time." },
+    {
+      title: "CodeSense",
+      description:
+        "Custom coding platform for visually impaired children that uses screen reader compatibility and voice-controlled programming to make learning to code more inclusive.",
+      image: "/CodeSense_Pic.png", // Place your image in public folder
+      link: "https://code-sense-gamma.vercel.app/",
+    },
+    {
+      title: "CloudMed",
+      description:
+        "Cloud-based storage solution for medical VR devices, built with Azure Blob Storage to securely host 250+ VR video files and eliminate reliance on internal headset storage.",
+      image: "/project-cloudmed.png",
+      link: "",
+    },
+    {
+      title: "Market Data Service",
+      description:
+        "Limited-availability platform built with FastAPI, PostgreSQL, and Kafka to process live data for 100+ stocks in real time.",
+      image: "/stock_charts.png",
+      link: "https://github.com/ChatchawanIllyes/market_data_service?tab=readme-ov-file",
+    },
+    {
+      title: "Plantify",
+      description:
+        "Transform any recipe into a plant-based version using AI by pasting a URL and getting vegan ingredient substitutions",
+      image: "/project-plantify.png",
+      link: "",
+    },
   ];
-
-
 
   const items = [
     {
@@ -80,10 +103,7 @@ function App() {
         }}
       >
         {showProjects ? (
-          <ProjectsDashboard 
-          projects={projects}
-        
-           />
+          <ProjectsDashboard projects={projects} />
         ) : (
           <ProfileDashboard dark={dark} />
         )}
