@@ -37,8 +37,8 @@ function App() {
       title: "CloudMed",
       description:
         "Cloud-based storage solution for medical VR devices, built with Azure Blob Storage to securely host 250+ VR video files and eliminate reliance on internal headset storage.",
-      image: "/project-cloudmed.png",
-      link: "https://code-sense-gamma.vercel.app/",
+      image: "/CloudMed.png",
+      link: "https://github.com/ChatchawanIllyes/CloudMed",
     },
     {
       title: "Market Data Service",
