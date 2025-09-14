@@ -23,7 +23,7 @@ export default function ProfileDashboard({ dark }) {
           <span className="Name">Chatchawan.</span>
           <div className="subheading">CS Student & Developer</div>
           <div className="location">
-            <img className="pin-pic" src="./map-pin.png" alt="pin location" />{" "}
+            <img className="pin-pic" src="/map-pin.png" alt="pin location" />{" "}
             Texas, United States
           </div>
         </div>

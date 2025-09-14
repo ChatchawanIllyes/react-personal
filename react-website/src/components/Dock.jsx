@@ -1,6 +1,3 @@
-// Responsive, scalable Dock component using motion
-"use client";
-
 import {
   motion,
   useMotionValue,
@@ -16,7 +13,6 @@ import {
   useRef,
   useState,
 } from "react";
-
 import "./Dock.css";
 
 function DockItem({
@@ -30,8 +26,6 @@ function DockItem({
   baseItemSize,
 }) {
   const ref = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-
   const mouseDistance = useTransform(mouseX, (val) => {
     const rect = ref.current?.getBoundingClientRect() ?? {
       x: 0,
@@ -39,22 +33,16 @@ function DockItem({
     };
     return val - rect.x - baseItemSize / 2;
   });
-
   const targetSize = useTransform(
     mouseDistance,
     [-distance, 0, distance],
     [baseItemSize, magnification, baseItemSize]
   );
   const size = useSpring(targetSize, spring);
-
-  // Separate icon and label
+  // Only render the icon (no label/tooltip)
   const icon = Children.toArray(children).find(
     (child) => child.type && child.type.name === "DockIcon"
   );
-  const label = Children.toArray(children).find(
-    (child) => child.type && child.type.name === "DockLabel"
-  );
-
   return (
     <motion.div
       ref={ref}
@@ -65,10 +53,6 @@ function DockItem({
         minHeight: baseItemSize,
         position: "relative",
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onFocus={() => setIsHovered(true)}
-      onBlur={() => setIsHovered(false)}
       onClick={onClick}
       className={`dock-item ${className}`}
       tabIndex={0}
@@ -76,33 +60,7 @@ function DockItem({
       aria-haspopup="true"
     >
       {icon}
-      {label && cloneElement(label, { isHovered })}
     </motion.div>
-  );
-}
-
-function DockLabel({ children, className = "", isHovered }) {
-  return (
-    <AnimatePresence>
-      {isHovered && (
-        <motion.div
-          initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: -16 }}
-          exit={{ opacity: 0, y: 0 }}
-          transition={{
-            duration: 0.22,
-            type: "spring",
-            stiffness: 180,
-            damping: 18,
-          }}
-          className={`dock-label ${className}`}
-          role="tooltip"
-          style={{ x: "-50%", pointerEvents: "none" }}
-        >
-          {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
   );
 }
 
@@ -113,7 +71,7 @@ function DockIcon({ children, className = "" }) {
 export default function Dock({
   items,
   className = "",
-  spring = { mass: 0.18, stiffness: 90, damping: 18 }, // optimized for smoothness
+  spring = { mass: 0.18, stiffness: 90, damping: 18 },
   magnification = 70,
   distance = 200,
   panelHeight = 68,

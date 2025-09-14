@@ -4,10 +4,14 @@ import RainbowBackground from "./components/Background";
 import ProfileDashboard from "./components/ProfileDashboard";
 import ProjectsDashboard from "./components/ProjectsDashboard";
 import Dock from "./components/Dock";
-import { VscHome, VscFolder } from "react-icons/vsc";
-import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
+import {
+  FolderIcon,
+  MoonIcon,
+  SunIcon,
+} from "@heroicons/react/24/outline/index.js";
 
 function App() {
+  console.log("App Rendering");
   const [dark, setDark] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [fade, setFade] = useState(true);
@@ -59,7 +63,13 @@ function App() {
   const transitionDuration = 500;
   const items = [
     {
-      icon: <VscHome size={18} />, 
+      icon: (
+        <img
+          src="/home_white.png"
+          alt="Home"
+          style={{ width: 22, height: 22, display: "block" }}
+        />
+      ),
       label: "Home",
       onClick: () => {
         if (!showProjects) return;
@@ -72,7 +82,7 @@ function App() {
       },
     },
     {
-      icon: <VscFolder size={18} />, 
+      icon: <FolderIcon style={{ width: 22, height: 22, color: "white" }} />,
       label: "Projects",
       onClick: () => {
         if (showProjects) return;
@@ -86,14 +96,18 @@ function App() {
     },
     {
       icon: dark ? (
-        <MdOutlineDarkMode size={18} />
+        <MoonIcon style={{ width: 22, height: 22, color: "white" }} />
       ) : (
-        <MdOutlineLightMode size={18} />
+        <SunIcon style={{ width: 22, height: 22, color: "white" }} />
       ),
       label: "Theme",
       onClick: () => setDark((d) => !d),
     },
   ];
+
+  console.log("FolderIcon:", FolderIcon);
+  console.log("MoonIcon:", MoonIcon);
+  console.log("SunIcon:", SunIcon);
 
   return (
     <>
@@ -102,14 +116,18 @@ function App() {
       {/* Main content above the stars */}
       <div className="crossfade-container">
         <div
-          className={`crossfade-view${!pendingProjects && fade ? ' active' : ''}`}
-          style={{ minHeight: '100vh' }}
+          className={`crossfade-view${
+            !pendingProjects && fade ? " active" : ""
+          }`}
+          style={{ minHeight: "100vh" }}
         >
           <ProfileDashboard dark={dark} />
         </div>
         <div
-          className={`crossfade-view${pendingProjects && fade ? ' active' : ''}`}
-          style={{ minHeight: '100vh' }}
+          className={`crossfade-view${
+            pendingProjects && fade ? " active" : ""
+          }`}
+          style={{ minHeight: "100vh" }}
         >
           <ProjectsDashboard projects={projects} />
         </div>

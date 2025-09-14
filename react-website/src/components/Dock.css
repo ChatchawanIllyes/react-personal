@@ -62,6 +62,14 @@ body.dark-mode .dock-item {
   justify-content: center;
 }
 
+.dock-icon img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+}
+
 .dock-label {
   position: absolute;
   top: -1.5rem;
