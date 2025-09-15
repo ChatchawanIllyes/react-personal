@@ -1,3 +1,20 @@
+/* TypeScript icon theme switch */
+.ts-icon-switch {
+  display: inline-block;
+  position: relative;
+}
+.ts-icon-light {
+  display: inline;
+}
+.ts-icon-dark {
+  display: none;
+}
+body.dark-mode .ts-icon-light {
+  display: none;
+}
+body.dark-mode .ts-icon-dark {
+  display: inline;
+}
 /* Ensure all project bios have the same height for alignment */
 .project-bio-placeholder {
   min-height: 56px; /* Adjust as needed for your longest bio */
