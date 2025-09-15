@@ -1,3 +1,10 @@
+/* Ensure all project bios have the same height for alignment */
+.project-bio-placeholder {
+  min-height: 56px; /* Adjust as needed for your longest bio */
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.5em;
+}
 .see-project-btn:active,
 .see-project-btn:focus-visible {
   filter: blur(1.5px) brightness(0.95);
@@ -80,6 +87,7 @@ h3 {
   font-size: 1em;
   color: #e8eaf1;
   margin-bottom: 0.7em;
+  margin-top: 0;
 }
 /* Default: dark mode */
 .see-project-btn {

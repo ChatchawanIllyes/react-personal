@@ -11,7 +11,6 @@ import {
 } from "@heroicons/react/24/outline/index.js";
 
 function App() {
-  console.log("App Rendering");
   const [dark, setDark] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [fade, setFade] = useState(true);
@@ -114,9 +113,6 @@ function App() {
     },
   ];
 
-  console.log("FolderIcon:", FolderIcon);
-  console.log("MoonIcon:", MoonIcon);
-  console.log("SunIcon:", SunIcon);
 
   return (
     <>
